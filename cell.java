@@ -1,5 +1,4 @@
 
-
 /*
 
  * Created on Dec 1, 2004
@@ -164,6 +163,26 @@ public class Cell {
 	public void calcNeighbors(Cell[][] cell) {
 
 		// You write this
+	
+		// You write this
+		for(int i = myX-1;i< myX +1;i++){
+			if(cell[i][myY+1].myAlive = true){
+				myNeighbors = myNeighbors + 1;
+			}
+		}
+		for(int i = myX-1;i< myX +1;i++){
+			if(cell[i][myY-1].myAlive = true){
+				myNeighbors = myNeighbors + 1;
+			}
+		}
+		if(cell[myX-1][myY].myAlive = true){
+			myNeighbors = myNeighbors + 1;
+		}
+		if(cell[myX+1][myY].myAlive = true){
+			myNeighbors = myNeighbors + 1;
+		}
+	
+
 
 	}
 
