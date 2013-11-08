@@ -1,3 +1,5 @@
+
+
 /*
 
  * Created on Dec 1, 2004
@@ -7,13 +9,9 @@
  */
 
 
-
-
 import java.awt.Color;
 
 import java.awt.Graphics;
-
-
 
 
 public class Cell {
@@ -28,11 +26,9 @@ public class Cell {
 
 	private Color myColor; // Based on alive/dead rules
 
-	private final Color DEFAULT_ALIVE = Color.ORANGE;
+	private final Color DEFAULT_ALIVE = Color.MAGENTA;
 
 	private final Color DEFAULT_DEAD = Color.GRAY;
-
-
 
 
 	public Cell(int x, int y) {
@@ -40,8 +36,6 @@ public class Cell {
 		this(x, y, false, Color.GRAY);
 
 	}
-
-
 
 
 	public Cell(int row, int col, boolean alive, Color color) {
@@ -57,15 +51,11 @@ public class Cell {
 	}
 
 
-
-
 	public boolean getAlive() {
 
 		return myAlive;
 
 	}
-
-
 
 
 	public int getX() {
@@ -75,8 +65,6 @@ public class Cell {
 	}
 
 
-
-
 	public int getY() {
 
 		return myY;
@@ -84,15 +72,11 @@ public class Cell {
 	}
 
 
-
-
 	public Color getColor() {
 
 		return myColor;
 
 	}
-
-
 
 
 	public void setAlive(boolean alive) {
@@ -110,8 +94,6 @@ public class Cell {
 	}
 
 
-
-
 	public void setAlive(boolean alive, Color color) {
 
 		myColor = color;
@@ -121,15 +103,11 @@ public class Cell {
 	}
 
 
-
-
 	public void setAliveNextTurn(boolean alive) {
 
 		myAliveNextTurn = alive;
 
 	}
-
-
 
 
 	public boolean getAliveNextTurn() {
@@ -139,15 +117,11 @@ public class Cell {
 	}
 
 
-
-
 	public void setColor(Color color) {
 
 		myColor = color;
 
 	}
-
-
 
 
 	public int getNeighbors() {
@@ -157,38 +131,36 @@ public class Cell {
 	}
 
 
+    public void calcNeighbors(Cell[][] cell) {
 
-
-	public void calcNeighbors(Cell[][] cell) {
+        
+        //checks top row for alive
+        for(int i = myX-1;i< myX +1;i++){
+                if(cell[i][myY+1].myAlive = true){
+                        myNeighbors ++;
+                }
+        }
+        //checks bottom row for alive
+        for(int i = myX-1;i< myX +1;i++){
+                if(cell[i][myY-1].myAlive = true){
+                        myNeighbors ++;
+                }
+        }
+        
+        //checks remaining side squares for alive
+        if(cell[myX-1][myY].myAlive = true){
+                myNeighbors ++;
+        }
+        
+        if(cell[myX+1][myY].myAlive = true){
+                myNeighbors ++;
+        }
+        
+        //prints neighbors to check
+        System.out.println(myNeighbors);
+}
 
 	
-		//checks top row for alive
-		for(int i = myX-1;i< myX +1;i++){
-			if(cell[i][myY+1].myAlive = true){
-				myNeighbors ++;
-			}
-		}
-		//checks bottom row for alive
-		for(int i = myX-1;i< myX +1;i++){
-			if(cell[i][myY-1].myAlive = true){
-				myNeighbors ++;
-			}
-		}
-		
-		//checks remaining side squares for alive
-		if(cell[myX-1][myY].myAlive = true){
-			myNeighbors ++;
-		}
-		
-		if(cell[myX+1][myY].myAlive = true){
-			myNeighbors ++;
-		}
-		
-		//prints neighbors to check
-		System.out.println(myNeighbors);
-	}
-	
-
 
 
 	public void draw(int x_offset, int y_offset, int width, int height,
@@ -208,8 +180,6 @@ public class Cell {
 		Color temp = g.getColor();
 
 
-
-
 		g.setColor(myColor);
 
 		g.fillRect(xleft, ytop, width, height);
@@ -217,5 +187,6 @@ public class Cell {
 	}
 
 }
+
 
 
