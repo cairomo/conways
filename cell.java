@@ -1,4 +1,3 @@
-
 /*
 
  * Created on Dec 1, 2004
@@ -162,30 +161,33 @@ public class Cell {
 
 	public void calcNeighbors(Cell[][] cell) {
 
-		// You write this
 	
-		// You write this
+		//checks top row for alive
 		for(int i = myX-1;i< myX +1;i++){
 			if(cell[i][myY+1].myAlive = true){
-				myNeighbors = myNeighbors + 1;
+				myNeighbors ++;
 			}
 		}
+		//checks bottom row for alive
 		for(int i = myX-1;i< myX +1;i++){
 			if(cell[i][myY-1].myAlive = true){
-				myNeighbors = myNeighbors + 1;
+				myNeighbors ++;
 			}
 		}
+		
+		//checks remaining side squares for alive
 		if(cell[myX-1][myY].myAlive = true){
-			myNeighbors = myNeighbors + 1;
+			myNeighbors ++;
 		}
+		
 		if(cell[myX+1][myY].myAlive = true){
-			myNeighbors = myNeighbors + 1;
+			myNeighbors ++;
 		}
-	
-
-
+		
+		//prints neighbors to check
+		System.out.println(myNeighbors);
 	}
-
+	
 
 
 
