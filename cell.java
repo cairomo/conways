@@ -1,4 +1,3 @@
-
 /*
  * Created on Dec 1, 2004
  * Last update: June 24, 2010
@@ -95,12 +94,12 @@ public class Cell {
 		}
 
 		//checks remaining side squares for alive
-		if(cell[myX-1][myY].myAlive = true){
+		if(cell[myX-1][myY].myAlive == true){
 			int leftrow = ((myX = 100) -1)%100;
 			myNeighbors ++;
 		}
 
-		if(cell[myX+1][myY].myAlive = true){
+		if(cell[myX+1][myY].myAlive == true){
 			int rightrow = ((myX = 100) +1)%100;
 			myNeighbors ++;
 		}
@@ -111,7 +110,7 @@ public class Cell {
 	}
 
 	public void willIBeAliveNextTurn(){
-		if(cell[y][x]=false){
+		if(cell[y][x]==false){
 			if (myNeighbors == 2){
 				setAliveNextTurn(true);
 			}
@@ -119,7 +118,7 @@ public class Cell {
 				setAliveNextTurn(true);
 			}
 		}
-		if(cell[y][x]=true){
+		if(cell[y][x]==true){
 			if (myNeighbors == 0){
 				setAliveNextTurn(false);
 			}
