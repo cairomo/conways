@@ -52,16 +52,19 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 		add(startStop);
 		startStop.setVisible(true);
 
+		//Pause button
 		Pause = new PauseButton();
 		Pause.setBounds(200, 550, 100, 36);
 		add(Pause);
 		Pause.setVisible(true);
 
+		//Clear button
 		Clear = new ClearButton();
 		Clear.setBounds(300, 550, 100, 36);
 		add(Clear);
 		Clear.setVisible(true);
 
+		//Step button
 		Step = new StepButton();
 		Step.setBounds(400, 550, 100, 36);
 		add(Step);
@@ -97,10 +100,10 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 			}
 		}
 
+		//Cells initially set alive by us, also calls calcNeighbors
 		cell[36][22].setAlive(true); // sample use of cell mutator method
 		cell[36][23].setAlive(true); // sample use of cell mutator method
 		cell[36][24].setAlive(true); // sample use of cell mutator method
-
 		cell[46][24].setAlive(true); // sample use of cell mutator method
 
 		cell[41][42].calcNeighbors(cell);
@@ -151,11 +154,13 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 		for(int row = 0; row < ROWS; row++){
 			for(int col = 0; col < COLS; col++){
 
+				//Invoking calcNeighbors and willIBeAliveNextTurn
 				cell[row][col].calcNeighbors(cell);
 				cell[row][col].willIBeAliveNextTurn();
 			}
 
 		}
+		//Sets whether you will be alive in the next turn given calcNeighbors
 		for(int row = 0; row < ROWS; row++){
 			for(int col = 0; col < COLS; col++){
 				boolean resultofIWillBeAlive = cell[row][col].getAliveNextTurn();
@@ -165,6 +170,8 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 		repaint();
 	}
 
+	//When the mouse is clicked, it finds the cell that was clicked and
+	//toggles the cell between alive or dead
 	public void mouseClicked(MouseEvent arg0) {
 		int x, y;
 		x =arg0.getX();
@@ -201,7 +208,8 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 	public void mouseReleased(MouseEvent arg0) {
 
 	}
-
+	//When the mouse is dragged across cells, it finds the cells 
+	//that were dragged across and toggles the cell between alive or dead
 	public void mouseDragged(MouseEvent arg0) {
 		int x, y;
 		x =arg0.getX();
@@ -218,7 +226,7 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 
 	}
 
-
+//Creates start/stop button that when clicked either starts or stops the program
 	private class StartButton extends JButton implements ActionListener {
 		StartButton() {
 			super("Start");
@@ -230,15 +238,18 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 			if (this.getText().equals("Start")) {
 				togglePaintLoop();
 				setText("Stop");
+				nextGeneration();
+				repaint();
+				
 			} else {
 				togglePaintLoop();
 				setText("Start");
 			}
-			
-			
 		}
 	}
-
+	
+	//Creates a button that when clicked advances the cells to the next 
+	//turn 
 	private class StepButton extends JButton implements ActionListener {
 		StepButton() {
 			super("Step");
@@ -250,14 +261,15 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 			if (this.getText().equals("Step")) {
 				togglePaintLoop();
 				setText("Step");
-			} else {
-				togglePaintLoop();
-				setText("Step");
-			}
-			nextGeneration();
-			repaint();
+				nextGeneration();
+				repaint();
+			} 
+			
 		}
 	}
+	
+	//Creates a button that when clicked stops the program until the 
+	//start button is clicked to resume it
 	private class PauseButton extends JButton implements ActionListener {
 		PauseButton() {
 			super("Pause");
@@ -276,6 +288,9 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 			repaint();
 		}
 	}
+	
+	//Creates a button that when clicked resets the board so that all 
+	// cells are dead
 	private class ClearButton extends JButton implements ActionListener {
 		ClearButton() {
 			super("Clear");
@@ -293,10 +308,15 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 
 			}
 
+		
 		}
+	
+	
 	}
+	
 
 }
+
 
 
 
