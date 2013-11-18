@@ -1,4 +1,3 @@
-
 /*
  * Created on Dec 1, 2004
  * Last update: June 24, 2010
@@ -73,35 +72,41 @@ public class Cell {
 		return myNeighbors;
 	}
 
-	public void calcNeighbors(Cell[][] cell) {
+public void calcNeighbors(Cell[][] cell) {
 
 
-		
+		int col = 0;
+		int row = 0;
 		
 		
 		 //checks top row for alive
 		for(int i = myX-1;i< myX +1;i++){
-			int toprow = ((myY = 80) -1)%100; ; // not cxorrect
+			//things with % tries to do wraparound
+			int toprow = ((myY = 80) +1)%80; // not correct
 			if(cell[i][toprow].myAlive == true){
 				myNeighbors ++;
 			}
 		}
 		//checks bottom row for alive
 		for(int i = myX-1;i< myX +1;i++){
-			int bottomrow =  ((myY = 80) +1)%100;
-			if(cell[i][myY-1].myAlive == true){
+			int bottomrow =  ((myY = 80) - 1)%80;
+			if(cell[i][bottomrow].myAlive == true){
 				myNeighbors ++;
 			}
 		}
 
 		//checks remaining side squares for alive
-		if(cell[myX-1][myY].myAlive == true){
-			int leftrow = ((myX = 100) -1)%100;
+		int leftrow = ((myX = 100) -1)%100;
+		if(cell[leftrow][myY].myAlive == true){	//not sure if this will overcount the diagonals (neighbors 1, 3, 6, 8)
+			/* |1 2 3|
+			 * |4 x 5|
+			 * |6 7 8|
+			 */
 			myNeighbors ++;
 		}
-
-		if(cell[myX+1][myY].myAlive == true){
-			int rightrow = ((myX = 100) +1)%100;
+		
+		int rightrow = ((myX = 100) +1)%100;
+		if(cell[rightrow][myY].myAlive == true){
 			myNeighbors ++;
 		}
 
@@ -109,7 +114,7 @@ public class Cell {
 		System.out.println(myNeighbors);
 
 	}
-
+	
 	public void willIBeAliveNextTurn(){
 		//enter this sequence if cell is dead (not alive)
 		if(myAlive == false){
