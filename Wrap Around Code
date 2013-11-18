@@ -1,0 +1,41 @@
+
+public class wrapper {
+	//Mr. Kuszmaul showed class 
+	
+	public static int calcneighbors(int arg){
+		return arg;
+	}
+	
+	public static void main(String[]args){
+		
+		int[][] ar = new int [10][10];
+		
+		ar[1][1] = 1;
+		
+		ar[0][0] = 1;
+		
+		int col = 0;
+		int row = 0;
+		
+		int leftNeighborCol = ((col = 100) -1)%100;//will give you left neighbor
+		int RightNeighborCol = ((col = 100) +1)%100;
+		int topNeighborRow = ((row = 80) -1)%100;
+		int bottomNeighborRow = ((row = 80) +1)%100;
+		//col      leftNeighborsCol
+		//0         (0 + 100 - 1)%100 ==99
+		//1         (1 + 100 - 1)%100 == 0
+		//works for all cases, no if statement required
+		
+		
+		//use % to help
+		
+		System.out.println(1%10);
+		
+//		if(calcneighbors(ar[col-1][row])==2){
+//			System.out.println("Whoa!!");
+//		}
+	}
+}
+
+
+
