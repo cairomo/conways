@@ -1,3 +1,4 @@
+
 /*
  * Created on Dec 1, 2004
  * Last update: June 24, 2010
@@ -81,14 +82,14 @@ public class Cell {
 		 //checks top row for alive
 		for(int i = myX-1;i< myX +1;i++){
 			int toprow = ((myY = 80) -1)%100; ; // not cxorrect
-			if(cell[i][toprow].myAlive = true){
+			if(cell[i][toprow].myAlive == true){
 				myNeighbors ++;
 			}
 		}
 		//checks bottom row for alive
 		for(int i = myX-1;i< myX +1;i++){
 			int bottomrow =  ((myY = 80) +1)%100;
-			if(cell[i][myY-1].myAlive = true){
+			if(cell[i][myY-1].myAlive == true){
 				myNeighbors ++;
 			}
 		}
@@ -110,43 +111,22 @@ public class Cell {
 	}
 
 	public void willIBeAliveNextTurn(){
-		if(cell[y][x]==false){
-			if (myNeighbors == 2){
+		//enter this sequence if cell is dead (not alive)
+		if(myAlive == false){
+			if (myNeighbors == 2 || myNeighbors == 3){
 				setAliveNextTurn(true);
-			}
-			if (myNeighbors == 3){
-				setAliveNextTurn(true);
-			}
-		}
-		if(cell[y][x]==true){
-			if (myNeighbors == 0){
-				setAliveNextTurn(false);
-			}
-			if (myNeighbors == 1){
-				setAliveNextTurn(false);
-			}
-			if (myNeighbors == 2){
-				setAliveNextTurn(true);
-			}
-			if (myNeighbors == 3){
-				setAliveNextTurn(true);
-			}
-			if (myNeighbors == 4){
-				setAliveNextTurn(false);
-			}
-			if (myNeighbors == 5){
-				setAliveNextTurn(false);
-			}
-			if (myNeighbors == 6){
-				setAliveNextTurn(false);
-			}
-			if (myNeighbors == 7){
-				setAliveNextTurn(false);
-			}
-			if (myNeighbors == 8){
-				setAliveNextTurn(false);
 			}
 	
+		}
+		if(myAlive == true){
+			if (myNeighbors == 2 || myNeighbors == 3){
+				setAliveNextTurn(true);
+			}
+
+			else {
+				setAliveNextTurn(false);
+			}
+		
 		}
 				//repaint();
 	}
@@ -164,6 +144,5 @@ public class Cell {
 		g.fillRect(xleft, ytop, width, height);
 	}
 }
-
 
 
