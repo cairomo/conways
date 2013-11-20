@@ -83,13 +83,13 @@ public void calcNeighbors(Cell[][] cell) {
 		 //checks top row for alive
 		for(int i = 0;i< 3;i++){
 			//things with % tries to do wraparound	
-			if(cell[toprow][leftcol + i].myAlive == true){
+			if(cell[toprow][((myY + 100 + i) - 1)%100].myAlive == true){
 				myNeighbors ++;
 			}
 		}
 		//checks bottom row for alive
 		for(int i = 0;i< 3;i++){
-			if(cell[bottomrow][leftcol + i].myAlive == true){
+			if(cell[bottomrow][((myY + 100 + i) - 1)%100].myAlive == true){
 				myNeighbors ++;
 			}
 		}
@@ -109,7 +109,7 @@ public void calcNeighbors(Cell[][] cell) {
 		}
 
 		//prints neighbors to check
-		System.out.println("neighbors" + myNeighbors);
+		//System.out.println("neighbors" + myNeighbors);
 		
 
 	}
