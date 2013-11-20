@@ -80,6 +80,9 @@ public void calcNeighbors(Cell[][] cell) {
 		//myNeighbors = 0;
 		//wraparound for all sides of cell
 		
+	
+	//remember: x is col, y is row. it goes cell[row][col] so cell[y][x]
+	
 		int rightcol = ((myX + 100) +1)%100;
 		int leftcol = ((myX + 100) - 1)%100;
 		int bottomrow =  ((myY + 80) - 1)%80;
