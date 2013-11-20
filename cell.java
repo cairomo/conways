@@ -73,31 +73,29 @@ public class Cell {
 	}
 
 public void calcNeighbors(Cell[][] cell) {
-
-
-		int col = 0;
-		int row = 0;
+	
+		//wraparound for all sides of cell
 		
-		
+		int rightcol = ((myY + 100) +1)%100;
+		int leftcol = ((myY + 100) - 1)%100;
+		int bottomrow =  ((myX + 80) - 1)%80;
+		int toprow = ((myX + 80) +1)%80;
 		 //checks top row for alive
-		for(int i = myX-1;i< myX +1;i++){
-			//things with % tries to do wraparound
-			int toprow = ((myY + 80) +1)%80; // not correct
-			if(cell[i][toprow].myAlive == true){
+		for(int i = 0;i< 3;i++){
+			//things with % tries to do wraparound	
+			if(cell[toprow][leftcol + i].myAlive == true){
 				myNeighbors ++;
 			}
 		}
 		//checks bottom row for alive
-		for(int i = myX-1;i< myX +1;i++){
-			int bottomrow =  ((myY + 80) - 1)%80;
-			if(cell[i][bottomrow].myAlive == true){
+		for(int i = 0;i< 3;i++){
+			if(cell[bottomrow][leftcol + i].myAlive == true){
 				myNeighbors ++;
 			}
 		}
-
 		//checks remaining side squares for alive
-		int leftrow = ((myX + 100) - 1)%100;
-		if(cell[leftrow][myY].myAlive == true){	//not sure if this will overcount the diagonals (neighbors 1, 3, 6, 8)
+		
+		if(cell[myY][leftcol].myAlive == true){	//not sure if this will overcount the diagonals (neighbors 1, 3, 6, 8)
 			/* |1 2 3|
 			 * |4 x 5|
 			 * |6 7 8|
@@ -105,15 +103,17 @@ public void calcNeighbors(Cell[][] cell) {
 			myNeighbors ++;
 		}
 		
-		int rightrow = ((myX + 100) +1)%100;
-		if(cell[rightrow][myY].myAlive == true){
+		
+		if(cell[myY][rightcol].myAlive == true){
 			myNeighbors ++;
 		}
 
 		//prints neighbors to check
-		System.out.println(myNeighbors);
+		System.out.println("neighbors" + myNeighbors);
+		
 
 	}
+
 	
 	public void willIBeAliveNextTurn(){
 		//enter this sequence if cell is dead (not alive)
@@ -149,5 +149,4 @@ public void calcNeighbors(Cell[][] cell) {
 		g.fillRect(xleft, ytop, width, height);
 	}
 }
-
 
