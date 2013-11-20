@@ -256,6 +256,7 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 	
 	//Creates a button that when clicked advances the cells to the next 
 	//turn 
+	//logic: do nextgeneration but only one, then pause.
 	private class StepButton extends JButton implements ActionListener {
 		StepButton() {
 			super("Step");
@@ -267,6 +268,7 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 			if (this.getText().equals("Step")) {
 				togglePaintLoop();
 				setText("Step");
+				togglePaintLoop();
 				//cell[ROWS][COLS].willIBeAliveNextTurn();
 				nextGeneration();
 				repaint();
