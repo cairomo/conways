@@ -158,17 +158,22 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 				//Invoking calcNeighbors and willIBeAliveNextTurn
 				cell[row][col].calcNeighbors(cell);
 				cell[row][col].willIBeAliveNextTurn();
+				repaint();
 			}
-
+			repaint();
+			//I DONT KNOW HOW MANY REPAINTS ARE NECESSARY
 		}
+		
 		//Sets whether you will be alive in the next turn given calcNeighbors
 		for(int row = 0; row < ROWS; row++){
 			for(int col = 0; col < COLS; col++){
 				boolean resultofIWillBeAlive = cell[row][col].getAliveNextTurn();
 						cell[row][col].setAlive(resultofIWillBeAlive);
+					repaint();
 			}
+			repaint();
 		}
-		repaint();
+		//repaint();
 	}
 
 	//When the mouse is clicked, it finds the cell that was clicked and
@@ -295,8 +300,7 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 	// cells are dead
 	private class ClearButton extends JButton implements ActionListener {
 		ClearButton() {
-			super("Clear");
-			
+			super("Clear");		
 			addActionListener(this);
 		}
 
