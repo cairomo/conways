@@ -30,6 +30,7 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 	private PauseButton Pause;
 	private ClearButton Clear;
 	private StepButton Step;
+	//private ChooseBox Choose;
 	private boolean paintloop = false;
 
 	public Display(int width, int height) {
@@ -101,12 +102,12 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 		}
 
 		//Cells initially set alive by us, also calls calcNeighbors
-		cell[36][22].setAlive(true); // sample use of cell mutator method
-		cell[36][23].setAlive(true); // sample use of cell mutator method
-		cell[36][24].setAlive(true); // sample use of cell mutator method
-		cell[46][24].setAlive(true); // sample use of cell mutator method
+		//cell[36][22].setAlive(true); // sample use of cell mutator method
+		//cell[36][23].setAlive(true); // sample use of cell mutator method
+		//cell[36][24].setAlive(true); // sample use of cell mutator method
+	//	cell[46][24].setAlive(true); // sample use of cell mutator method
 
-		cell[41][42].calcNeighbors(cell);
+	//	cell[41][42].calcNeighbors(cell);
 		//[y][x]
 	}
 
@@ -261,6 +262,7 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 			if (this.getText().equals("Step")) {
 				togglePaintLoop();
 				setText("Step");
+				//cell[ROWS][COLS].willIBeAliveNextTurn();
 				nextGeneration();
 				repaint();
 			} 
@@ -314,9 +316,25 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 	
 	}
 	
+	/*private class ChooseBox extends JComboBox implements ActionListener {
+		ChooseBox() {
+			super("Choose");
+			
+			addActionListener(this);
+		}
+		
+		String[] petStrings = { "Bird", "Cat", "Dog", "Rabbit", "Pig" };
+
+		//Create the combo box, select item at index 4.
+		//Indices start at 0, so 4 specifies the pig.
+		JComboBox petList = new JComboBox(petStrings);
+		petList.setSelectedIndex(4);
+		petList.addActionListener(this);
+
+	}*/
+	
 
 }
-
 
 
 
