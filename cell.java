@@ -43,8 +43,10 @@ public class Cell {
 	}
 
 	public void setAlive(boolean alive) {
+		//if the cell is alive, set alive to true and color it magenta
 		if (alive) {
 			setAlive(true, DEFAULT_ALIVE);
+			//if the cell is dead, set alive to false and color it grey
 		} else {
 			setAlive(false, DEFAULT_DEAD);
 		}
@@ -71,18 +73,19 @@ public class Cell {
 	public int getNeighbors() {
 		return myNeighbors;
 	}
+	//calcNeighbors should find the number of neighbors surrounding any
+	//cell, alive or dead
+	public void calcNeighbors(Cell[][] cell) {
 
-public void calcNeighbors(Cell[][] cell) {
-	
-		//wraparound for all sides of cell
-		
+		//wrap around for all sides of cell
+
 		int rightcol = ((myY + 100) +1)%100;
 		int leftcol = ((myY + 100) - 1)%100;
 		int bottomrow =  ((myX + 80) - 1)%80;
 		int toprow = ((myX + 80) +1)%80;
-		 //checks top row for alive
+		//checks top row for alive
 		for(int i = 0;i< 3;i++){
-			//things with % tries to do wraparound	
+			//things with % tries to do wrap around	
 			if(cell[toprow][((myY + 100 + i) - 1)%100].myAlive == true){
 				myNeighbors ++;
 			}
@@ -94,7 +97,7 @@ public void calcNeighbors(Cell[][] cell) {
 			}
 		}
 		//checks remaining side squares for alive
-		
+
 		if(cell[myY][leftcol].myAlive == true){	//not sure if this will overcount the diagonals (neighbors 1, 3, 6, 8)
 			/* |1 2 3|
 			 * |4 x 5|
@@ -102,27 +105,29 @@ public void calcNeighbors(Cell[][] cell) {
 			 */
 			myNeighbors ++;
 		}
-		
-		
+
+
 		if(cell[myY][rightcol].myAlive == true){
 			myNeighbors ++;
 		}
 
 		//prints neighbors to check
 		//System.out.println("neighbors" + myNeighbors);
-		
+
 
 	}
 
-	
+
 	public void willIBeAliveNextTurn(){
 		//enter this sequence if cell is dead (not alive)
 		if(myAlive == false){
 			if (myNeighbors == 2 || myNeighbors == 3){
 				setAliveNextTurn(true);
 			}
-	
+
 		}
+		//if the cell is alive it follows this code to see if
+		//the cell will be alive next turn based on its neighbors
 		if(myAlive == true){
 			if (myNeighbors == 2 || myNeighbors == 3){
 				setAliveNextTurn(true);
@@ -131,11 +136,11 @@ public void calcNeighbors(Cell[][] cell) {
 			else {
 				setAliveNextTurn(false);
 			}
-		
+
 		}
-				//repaint();
+		//repaint();
 	}
-	
+
 	public void draw(int x_offset, int y_offset, int width, int height,
 			Graphics g) {
 		// I leave this understanding to the reader
@@ -149,4 +154,3 @@ public void calcNeighbors(Cell[][] cell) {
 		g.fillRect(xleft, ytop, width, height);
 	}
 }
-
