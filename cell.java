@@ -80,28 +80,28 @@ public void calcNeighbors(Cell[][] cell) {
 		//myNeighbors = 0;
 		//wraparound for all sides of cell
 		
-		int rightcol = ((myY + 100) +1)%100;
-		int leftcol = ((myY + 100) - 1)%100;
-		int bottomrow =  ((myX + 80) - 1)%80;
-		int toprow = ((myX + 80) +1)%80;
+		int rightcol = ((myX + 100) +1)%100;
+		int leftcol = ((myX + 100) - 1)%100;
+		int bottomrow =  ((myY + 80) - 1)%80;
+		int toprow = ((myY + 80) +1)%80;
 		 //checks top row for alive
 		//cells 1 2 3
 		for(int i = 0;i< 3;i++){
 			//things with % tries to do wraparound	
-			if(cell[toprow][((myY + 100 + i) - 1)%100].myAlive == true){
+			if(cell[toprow][((myX + 100 + i) - 1)%100].myAlive == true){
 				myNeighbors ++;
 			}
 		}
 		//checks bottom row for alive
 		//cells 6 7 8
 		for(int i = 0;i< 3;i++){
-			if(cell[bottomrow][((myY + 100 + i) - 1)%100].myAlive == true){
+			if(cell[bottomrow][((myX + 100 + i) - 1)%100].myAlive == true){
 				myNeighbors ++;
 			}
 		}
 		//checks remaining side squares for alive
 		//left side cell 4
-		if(cell[myY][leftcol].myAlive == true){	//not sure if this will overcount the diagonals (neighbors 1, 3, 6, 8)
+		if(cell[myY][leftcol].myAlive == true){
 			/* |1 2 3|
 			 * |4 x 5|
 			 * |6 7 8|
