@@ -77,7 +77,7 @@ public class Cell {
     //cell, alive or dead
 public void calcNeighbors(Cell[][] cell) {
 	//CALCULATES INCORRECTLY. SOME LONELY CELLS STILL ALIVE. maybe we need to reset myNeighbors after every turn?
-		//myNeighbors = 0;
+		myNeighbors = 0;
 		//wraparound for all sides of cell
 		
 	
