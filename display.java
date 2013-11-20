@@ -238,13 +238,12 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 			if (this.getText().equals("Start")) {
 				togglePaintLoop();
 				setText("Stop");
-				nextGeneration();
-				repaint();
-				
 			} else {
 				togglePaintLoop();
 				setText("Start");
 			}
+			
+			
 		}
 	}
 	
@@ -261,10 +260,12 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 			if (this.getText().equals("Step")) {
 				togglePaintLoop();
 				setText("Step");
-				nextGeneration();
-				repaint();
-			} 
-			
+			} else {
+				togglePaintLoop();
+				setText("Step");
+			}
+			nextGeneration();
+			repaint();
 		}
 	}
 	
@@ -316,8 +317,6 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 	
 
 }
-
-
 
 
 
