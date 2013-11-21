@@ -89,9 +89,14 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 				e.printStackTrace();
 			}
 			nextGeneration();
-			repaint();
+			update();
 		}
+		update();
+	}
+	
+	public void update() {
 		repaint();
+		Cell.turnCount++;
 	}
 
 	public void initCells() {
@@ -158,9 +163,10 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 				//Invoking calcNeighbors and willIBeAliveNextTurn
 				cell[row][col].calcNeighbors(cell);
 				cell[row][col].willIBeAliveNextTurn();
-				repaint();
+				update();
+				
 			}
-			repaint();
+			update();
 			//I DONT KNOW HOW MANY REPAINTS ARE NECESSARY
 		}
 		
@@ -169,9 +175,9 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 			for(int col = 0; col < COLS; col++){
 				boolean resultofIWillBeAlive = cell[row][col].getAliveNextTurn();
 						cell[row][col].setAlive(resultofIWillBeAlive);
-					repaint();
+					update();
 			}
-			repaint();
+			update();
 		}
 		//repaint();
 	}
@@ -188,13 +194,13 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 		if(makeAlive){
 			cell[y][x].setAlive(true);  //setAlive(true);
 
-			repaint();
+			update();
 		}
 		else{
 			cell[y][x].setAlive(false);  //setAlive(true);
 
 		}
-		repaint();
+		update();
 
 
 	}
@@ -225,7 +231,7 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 		cell[y][x].setAlive(true);  //setAlive(true);
 		x = 0;
 		y= 0;
-		repaint();
+		update();
 	}
 
 	public void mouseMoved(MouseEvent arg0) {
@@ -341,9 +347,3 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 	
 
 }
-
-
-
-
-
-
