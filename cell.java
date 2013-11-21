@@ -8,10 +8,12 @@ import java.awt.Graphics;
 
 public class Cell {
 	private int myX, myY; // x,y position on grid
+	public static int turnCount;
 	private boolean myAlive; // alive (true) or dead (false)
 	private int myNeighbors; // count of neighbors with respect to x,y
 	private boolean myAliveNextTurn; // Used for state in next iteration
 	private Color myColor; // Based on alive/dead rules
+	private Color tempColor;
 	private final Color DEFAULT_ALIVE = Color.MAGENTA;
 	private final Color DEFAULT_DEAD = Color.GRAY;
 
@@ -43,9 +45,34 @@ public class Cell {
 	}
 
     public void setAlive(boolean alive) {
-        //if the cell is alive, set alive to true and color it magenta
+    	//changes depending on column and turn
+    	int trueColor = (myY + turnCount)%8;
+    	
+    	//switch statements for different colors
+    	switch (trueColor) {
+    	case 0: tempColor = Color.MAGENTA;
+    		break;
+    	case 1: tempColor = Color.RED;
+    		break;
+    	case 2: tempColor = Color.ORANGE;
+    		break;
+    	case 3: tempColor = Color.YELLOW;
+    		break;
+    	case 4: tempColor = Color.GREEN;
+    		break;
+    	case 5: tempColor = Color.CYAN;
+    		break;
+    	case 6: tempColor = Color.BLUE;
+    		break;
+    	case 7: tempColor = Color.PINK;
+    		break;
+    	default: tempColor = Color.MAGENTA;
+    	
+    	}
+   
+        //if the cell is alive, set alive to true and color it the corresponding color
         if (alive) {
-                setAlive(true, DEFAULT_ALIVE);
+                setAlive(true, tempColor);
                 //if the cell is dead, set alive to false and color it grey
         } else {
                 setAlive(false, DEFAULT_DEAD);
@@ -53,6 +80,7 @@ public class Cell {
 }
 
 	public void setAlive(boolean alive, Color color) {
+		
 		myColor = color;
 		myAlive = alive;
 	}
@@ -165,4 +193,3 @@ public void calcNeighbors(Cell[][] cell) {
 		g.fillRect(xleft, ytop, width, height);
 	}
 }
-
