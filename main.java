@@ -1,12 +1,4 @@
 
-
-/*
-
- * Created on Dec 1, 2004
-
- * Latest update: June 24, 2010
-
- */
 /*
  * Rules:
  * For a space that is 'populated': Each cell with one or no 
