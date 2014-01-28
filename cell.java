@@ -104,7 +104,7 @@ public class Cell {
 	//calcNeighbors should find the number of neighbors surrounding any
     //cell, alive or dead
 public void calcNeighbors(Cell[][] cell) {
-	//CALCULATES INCORRECTLY. SOME LONELY CELLS STILL ALIVE. maybe we need to reset myNeighbors after every turn?
+
 		myNeighbors = 0;
 		//wraparound for all sides of cell
 		
