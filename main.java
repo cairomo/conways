@@ -1,5 +1,4 @@
-
-
+//chloe mo, 2013
 /*
  * Rules:
  * For a space that is 'populated': Each cell with one or no 
