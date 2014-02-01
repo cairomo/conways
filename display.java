@@ -62,30 +62,34 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 		startStop.setBounds(100, 550, 100, 36);
 		add(startStop);
 		startStop.setVisible(true);
+		startStop.setToolTipText("Click to start simulation sequence");
 
 
 		//Clear button
 		Clear = new ClearButton();
 		Clear.setBounds(200, 550, 100, 36);
-		
 		add(Clear);
 		Clear.setVisible(true);
+		Clear.setToolTipText("Click to clear grid of cells");
 
 		//Step button
 		Step = new StepButton();
 		Step.setBounds(300, 550, 100, 36);
 		add(Step);
 		Step.setVisible(true);
+		Step.setToolTipText("Click to move one generation at a time");
 		
 		Rocket = new RocketButton();
 		Rocket.setBounds(400, 550, 100, 36);
 		add(Rocket);
 		Rocket.setVisible(true);
+		Rocket.setToolTipText("Click to display a preset arrangement of cells in the shape of a rocket");
 		
 		Peace = new PeaceButton();
 		Peace.setBounds(500, 550, 100, 36);
 		add(Peace);
 		Peace.setVisible(true);
+		Peace.setToolTipText("Click to display a preset arrangement of cells in the shape of a peace sign");
 
 		repaint();
 	}
@@ -1323,11 +1327,5 @@ public class Display extends JComponent implements MouseListener, MouseMotionLis
 			cell[47][54].setAlive(true);
 		
 		}
-	
-	
 	}
-
-
-	
-
 }
