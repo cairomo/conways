@@ -1,3 +1,5 @@
+//chloe mo, 2013
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
