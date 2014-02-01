@@ -1,7 +1,3 @@
-/*
- * Created on Dec 1, 2004
- * Last update: June 24, 2010
- */
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -104,7 +100,6 @@ public class Cell {
 	//calcNeighbors should find the number of neighbors surrounding any
     //cell, alive or dead
 public void calcNeighbors(Cell[][] cell) {
-
 		myNeighbors = 0;
 		//wraparound for all sides of cell
 		
